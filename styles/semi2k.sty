@@ -1,0 +1,184 @@
+%
+%  semi2k.sty : 二段組使用 スタイルファイル (主に内部資料に用いる)
+%                           26th Apl.2000 - Version 1.0 k-koyanagi
+
+%スタイルファイルの読み込み
+\usepackage{tpic3,ascmac}%
+\usepackage{equation}%
+
+%%%%% 全体のレイアウト設定 %%%%%
+\pagestyle{empty}%ヘッダ，ページ番号共になし
+\raggedbottom%
+
+%マージンの設定%
+\setlength{\oddsidemargin}{-10.4mm}%
+\setlength{\evensidemargin}{\oddsidemargin}%
+%\setlength{\topmargin}{-5.4mm}%
+\setlength{\topmargin}{0.0mm}%
+\setlength{\headsep}{0pt}%
+\setlength{\headheight}{0pt}%
+\setlength{\footskip}{15pt}%
+
+\setlength{\textheight}{250.0mm}%
+\setlength{\textwidth}{180.0mm}%
+\setlength{\columnsep}{8.0mm}%
+
+% minipage環境を使って擬似2段組を作るときの環境 (Feb.1999)
+\newlength\minicolumnsep %\textwidthhalf のときの擬似2段組の間の幅
+	\setlength\minicolumnsep{0.2\columnsep}
+\newlength\textwidthhalf %minipage環境を使って擬似2段組を作るときの幅
+	\setlength\textwidthhalf{\textwidth}
+	\addtolength\textwidthhalf{-\columnsep}
+	\setlength\textwidthhalf{0.25\textwidthhalf}
+	\addtolength\textwidthhalf{-\minicolumnsep}
+
+%文字間隔，行送りの設定%
+%\kanjiskip = -0.05zw plus .1zw minus .05zw %漢字間の空き
+\renewcommand{\baselinestretch}{0.9}%
+% ディスプレイ数式での行送りの変更 (1 Feb 99)
+\addtolength{\abovedisplayskip}{-3pt}
+\addtolength{\belowdisplayskip}{-2pt}
+\addtolength{\abovedisplayshortskip}{-4pt}
+\addtolength{\belowdisplayshortskip}{-2pt}
+%\addtolength{\jot}{-1pt}
+
+% array,tableでの列間隔の変更 (25 Feb 99)
+\addtolength{\arraycolsep}{-3pt}
+\addtolength{\tabcolsep}{-3pt}
+
+%1page に入る図の数の変更
+\setcounter{totalnumber}{9}
+
+%%%%% タイトルコマンドの制作 %%%%%
+% 通常のタイトルコマンド(２段組用)(Apl.2000)
+\def\mytitle{%
+  \par%
+  \begingroup%
+    \def\thefootnote{\fnsymbol{footnote}}%
+    \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}%
+    \if@twocolumn \twocolumn[\@mytitle]%
+    \else%
+      \newpage%
+      \global\@topnum\z@%
+      \@mytitle%
+    \fi%
+    %\thispagestyle{empty}%
+    \@thanks%
+  \endgroup%
+  
+  \setcounter{footnote}{0}%
+  \let\mytitle=\relax%
+  \let\@mytitle=\relax%
+  \gdef\@TITLE{}%
+  \gdef\@AUTHOR{}%
+  \gdef\@DATE{}%
+  \gdef\@thanks{}%
+  \let\thanks\relax%
+}%
+ 
+\def\@mytitle{%
+  \newpage%
+  \null%
+  \begin{center}%
+    \vskip -2em%
+      {\LARGE \@TITLE \par}%
+    \vskip 0.4em%
+       {\large \@AUTHOR \par}%
+    \vskip 0.4em%
+       {\normalsize \@DATE \par}%
+%    \vskip -1em%
+    \vskip 1em%(２段組用)
+  \end{center}%
+}%
+
+\long\def\TITLE#1{\long\gdef\@TITLE{#1}}%
+\long\def\AUTHOR#1{\long\gdef\@AUTHOR{#1}}%
+\long\def\DATE#1{\long\gdef\@DATE{#1}}%
+
+% シンプルタイプのタイトルコマンド (Apl.2000)
+\def\simpletitle{%
+  \def\@maketitle{%
+    \newpage\null\vskip 0.5em%
+    \if\author
+      {\bf\Large\@title}\hfill\@date\\%
+    \else
+      {\bf\Large\@title}\vskip 0.5em\hfill\@author\hfill(\@date)%
+    \fi
+    \par \vskip 1em}%
+  \maketitle
+  \let\simpletitle\relax
+}
+
+%%%%% 章節番号，ページ番号表示などの設定 %%%%%
+%節見出しの変更（アラビア数字に指定）
+\def\thesection {\arabic{section}.}
+\def\thesubsection {\thesection \arabic{subsection}}
+\def\thesubsubsection {\thesubsection.\arabic{subsubsection}}
+
+\def\section{%
+  \@startsection%
+  {section}{1}{\z@}%
+  {1.5ex plus 0.5ex minus 0.5ex}%%{3.5ex plus 1ex minus 0.2ex}%
+  {1.0ex plus 0.3ex minus 0.3ex}%%{2.3ex plus .2ex}%
+  {\large\bf}}%%{\Large\bf}}%
+
+\def\subsection{%
+  \@startsection%
+  {subsection}{2}{\z@}%
+  {1.3ex plus 0.4ex minus 0.3ex}%%{3.25ex plus 1ex minus 0.2ex}%
+  {0.8ex plus .2ex}%%{1.5ex plus .2ex}%
+  {\normalsize\bf}}%%{\large\bf}%
+
+\def\subsubsection{%
+  \@startsection%
+  {subsubsection}{3}{\z@}%
+  {0.5ex}%%{3.25ex plus 1ex minus 0.2ex}%
+  {0.1ex}%%{1.5ex plus .2ex}%
+  {\normalsize\bf}}%
+
+%図番，表番号の書き方の変更
+\long\def\@makecaption#1#2{%
+  \vskip 10pt%
+  \setbox\@tempboxa\hbox{#1\hspace{8pt} #2}%
+  \ifdim \wd\@tempboxa > \hsize%
+    \unhbox\@tempboxa\par%
+  \else%
+    \hbox to \hsize{\hfil\box \@tempboxa \hfil}%
+  \fi}%
+
+%図->Fig. 表->Table
+\def\fnum@figure{Fig. \thefigure}
+\def\fnum@table{Table \thetable}
+%図番と表番を太文字に
+%\def\fnum@figure{{\gt 図}{\bf\thefigure}}
+%\def\fnum@table{{\gt 表}{\bf\thetable}}
+
+%文献引用形式の変更%
+\def\@cite#1#2{$^{\hbox{\scriptsize ({#1\if@tempswa , #2\fi})}}$}%
+%文献リストの表示変更%
+\def\thebibliography#1{%
+  \begin{center}
+    \section*{\normalsize\gt 文　　　献\markboth{引 用 文 献}{引 用 文 献}}%
+  \end{center}
+  \list%
+    {(\arabic{enumi})}{\settowidth\labelwidth{#1)}%
+    \leftmargin = \labelwidth%
+    \advance \leftmargin by \labelsep%
+    \usecounter{enumi}}%
+  \def\newblock{\hskip .08em plus .10em minus .05em}%
+  \sloppy%
+  \sfcode`\.=1000\relax}%
+\let\endthebibliography=\endlist
+
+%%% おまけ %%%
+%トラッドマーク
+\def\tradmark{{\rm\ooalign{\hfil\lower.168ex\hbox{R}\hfil\crcr\mathhexbox20D}}}
+\def\Hinf{\mbox{$H_\infty$}}%
+\def\Cdot{\mbox{$\cdot$}}%
+\def\dan{\hspace*{1em}}				%段落ち
+\newcommand{\Efield}{\mbox{kV/mm}}
+\newcommand{\inertia}{\mbox{kg$\cdot$m$^2$}}
+\newcommand{\viscosity}{\mbox{N$\cdot$m$\cdot$s/rad}}
+\newcommand{\stiffness}{\mbox{N$\cdot$m/rad}}
+\newcommand{\torque}{\mbox{N$\cdot$m}}
+\newcommand{\integra}{\mbox{N$\cdot$m/(rad$\cdot$s)}}

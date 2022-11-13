@@ -1,0 +1,299 @@
+%  Tpic.sty : Macro style for CANDY4/5 output file by tpic3_X.plt
+%
+% Follow commands use coordinate that is used in picture environment.
+% Then, modifying \unitlength causes modifying the whole picture size.
+%
+% Draw poly-line path (@TPIC2_X.PLT)
+%    \Tpath(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\special{fp}
+%    \Tpath(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\special{da ....}
+%    \Tpath(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\special{dt ....}
+%
+% Draw poly-line path. Their use `\Tlinepatn'. (@TPIC3_X.PLT)
+%    \Tline(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%    \Tdotline(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%    \Tdashline(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%    \Tuserlinei(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%    \Tuserlineii(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%    \Tnoline(x1,y1)(x2,y2)(x3,y3),.....,(xn,yn)\Tflushpath
+%
+% Change line-thickness. The unit of thisckness is \Thickunit.
+% If no changing is needed, any `special' command is generated. (@TPIC3_X.PLT)
+%    \Tlinethickness{thickness}
+%
+% Design line-pattern of the flashpath specials "dt" or "da".
+% The scaling unit is \Thickunit. (@TPIC3_X.PLT)
+%    \T{dot|dash|user}linepatn{{dt|da}[len1][len2][len3][len4],.....}
+%
+% User-design line
+%
+% \Tlinepatn{da}[..][..]....\Tpath(..,..)(....\Tflashpath
+%
+% Generate shaded region. Put this just before the poly-line command.
+% Level is shading level:(0-1).
+%    \Tshadelevel{level}
+%
+% followings are default line-pattern designs!
+\def\Tline{\def\Tflashpath{\special{fp}}\Tpath}%
+\def\Tdotline{\def\Tflashpath{\@Tdotlinef}\Tpath}%
+\def\Tdashline{\def\Tflashpath{\@Tdashlinef}\Tpath}%
+\def\Tuserlinei{\def\Tflashpath{\@Tuserlineif}\Tpath}%
+\def\Tuserlineii{\def\Tflashpath{\@Tuserlineiif}\Tpath}%
+\def\Tnoline{\def\Tflashpath{\special{ip}}\Tpath}
+\def\Tspline{\def\Tflashpath{\special{sp}}\Tpath}
+%
+\def\Tpath(#1,#2){%
+    \@Tpath(#1,#2)%
+}
+\def\@Tpath(#1,#2){%
+    \@tempdima #1\unitlength%
+    \@tempdimb #2\unitlength%
+    \@tempcnta \@tempdima \advance\@tempcnta 2368 \divide\@tempcnta 4736%
+    \@tempcntb -\@tempdimb \advance\@tempcntb -2368 \divide\@tempcntb 4736%
+    \@Tpaspecial{\the\@tempcnta}{\the\@tempcntb}%
+    \@ifnextchar ({\@Tpath}{\relax}%
+}
+\def\@Tpaspecial#1#2{%
+    \special{pa #1 #2}%
+}
+\newdimen\Thickunit
+\Thickunit=0.001in
+\newdimen\@lastThickness
+\def\Tlinethickness#1{\ifdim\@lastThickness=#1\Thickunit\else
+\@lastThickness#1\Thickunit\@tempdima=#1\Thickunit
+\@tempcnta\@tempdima\advance\@tempcnta 2368\divide\@tempcnta 4736%
+\@Tpnspecial{\the\@tempcnta}\fi}%
+\def\@Tpnspecial#1{\special{pn #1}}%
+% design line-pattern
+\def\Tdotlinepatn#1{\Tlinepatn#1\xdef\@Tdotlinef{\noexpand\special{\@Tpatn}}}%
+\def\Tdashlinepatn#1{\Tlinepatn#1\xdef\@Tdashlinef{\noexpand\special{\@Tpatn}}}%
+\def\Tuserlineipatn#1{\Tlinepatn#1\xdef\@Tuserlineif{\noexpand\special{\@Tpatn}}}%
+\def\Tuserlineiipatn#1{\Tlinepatn#1\xdef\@Tuserlineiif{\noexpand\special{\@Tpatn}}}%
+%
+\def\Tlinepatn#1{\gdef\@Tpatn{#1}\@Tlinepatn}%
+\def\@Tlinepatn[#1]{\@tempdima #1\Thickunit%
+    \@tempcnta\@tempdima\advance\@tempcnta2368%
+    \@tempcntb\@tempcnta\divide\@tempcnta4736214%
+    \edef\@@Tpatn{ \the\@tempcnta.}%
+    \multiply\@tempcnta4736214\advance\@tempcntb-\@tempcnta\@tempcnta\@tempcntb
+    \divide\@tempcnta473621\edef\@@Tpatn{\@@Tpatn \the\@tempcnta}%
+    \multiply\@tempcnta473621\advance\@tempcntb-\@tempcnta\@tempcnta\@tempcntb
+    \divide\@tempcnta47362\edef\@@Tpatn{\@@Tpatn \the\@tempcnta}%
+    \multiply\@tempcnta47362\advance\@tempcntb-\@tempcnta\@tempcnta\@tempcntb
+    \divide\@tempcnta4736\edef\@@Tpatn{\@@Tpatn \the\@tempcnta}%
+	\xdef\@Tpatn{\@Tpatn \@@Tpatn}%
+    \@ifnextchar[{\@Tlinepatn}{\gdef\Tflashpath{\special{\@Tpatn}}}}%
+%    \@ifnextchar[{\@Tlinepatn}{\@@Tlinepatn{\@Tpatn}}}%
+%\def\@@Tlinepatn#1{\special{#1}}
+%
+\def\Tshade#1{\special{sh #1}}%
+%
+%Rotate figure (extended tpic special of dviout/dviprt 2.39)
+% \Trotate(x, y, r)
+%    (x,y) is center point of rotation. r is angle (Rad.)
+%Draw crcle, arc, ellipse
+% Tcircle(x, y, r) .......... (x,y) is center position. r is radius.
+% Ticircle(x, y, r) ......... Draw no outline. For filled pattern.
+% Tarc(x, y, r, s, e) ....... (x,y) is center position. r is radius.
+%                             s and e are start and end angle in Rad.
+% Tellipse(x, y, rx, ry) .... rx and ry are x- and y-radius.
+% Tiellipse(x, y, rx, ry) ... Draw no outline. For filled pattern.
+%
+% \Tsetfont{fontsize}
+%
+\newcount\@tempcntc
+\newcount\@tempcntd
+\newdimen\@tempdimc
+\newdimen\@tempdimd
+\def\Trotate(#1,#2,#3){%
+    \@tempdima #1\unitlength
+    \@tempdimb #2\unitlength
+    \@tempcnta \@tempdima \divide\@tempcnta 4736%
+    \@tempcntb -\@tempdimb \divide\@tempcntb 4736%
+    \@Trtspecial{\the\@tempcnta}{\the\@tempcntb}{#3}%
+}
+\def\@Trtspecial#1#2#3{\special{rt #1 #2 #3}}%
+\def\Tarc(#1,#2,#3,#4,#5){\@Tarc{ar}{#1}{#2}{#3}{#3}{#4}{#5}}%
+\def\Tiarc(#1,#2,#3,#4,#5){\@Tarc{ia}{#1}{#2}{#3}{#3}{#4}{#5}}%
+\def\Tcircle(#1,#2,#3){\@Tarc{ar}{#1}{#2}{#3}{#3}{0}{6.2832}}%
+\def\Ticircle(#1,#2,#3){\@Tarc{ia}{#1}{#2}{#3}{#3}{0}{6.2832}}%
+\def\Tellipse(#1,#2,#3,#4){\@Tarc{ar}{#1}{#2}{#3}{#4}{0}{6.2832}}%
+\def\Tiellipse(#1,#2,#3,#4){\@Tarc{ia}{#1}{#2}{#3}{#4}{0}{6.2832}}%
+\def\@Tarc#1#2#3#4#5#6#7{%
+        \@tempdima #2\unitlength%
+        \@tempdimb #3\unitlength%
+        \@tempdimc #4\unitlength%
+        \@tempdimd #5\unitlength%
+        \@tempcnta \@tempdima \advance\@tempcnta 2368 \divide\@tempcnta 4736%
+        \@tempcntb -\@tempdimb \advance\@tempcntb -2368 \divide\@tempcntb 4736%
+        \@tempcntc \@tempdimc \advance\@tempcntc 2368 \divide\@tempcntc 4736%
+        \@tempcntd \@tempdimd \advance\@tempcntd 2368 \divide\@tempcntd 4736%
+        \@Tarcspecial{#1}{\the\@tempcnta}{\the\@tempcntb}{\the\@tempcntc}{\the\@tempcntd}{#6}{#7}}%
+\def\@Tarcspecial#1#2#3#4#5#6#7{\special{#1 #2 #3 #4 #5 #6 #7}}%
+%
+%
+% Generate Line-pattern sample. This can handle like charcters.
+%
+% \Tlinesamp[marking-char]{length}{\Tlinepatn{..}[..][..]|\special{fp}}
+%
+%
+\def\Tlinesamp{\@ifnextchar [{\@Tlinesamp}{\@Tlinesamp[ ]}%]
+}
+\def\@Tlinesamp[#1]#2#3{%
+\@tempdima=#2%
+\@tempdimb=0.7ex%
+\@tempcnta \@tempdima \advance\@tempcnta 2368 \divide\@tempcnta 4736%
+\@tempcntb -\@tempdimb \advance\@tempcntb -2368 \divide\@tempcntb 4736%
+\@Tpaspecial{0}{\the\@tempcntb}%
+\@Tpaspecial{\the\@tempcnta}{\the\@tempcntb}%
+{#3}%
+\hbox to #2{\hfil{#1}\hfil}}%
+%
+% OverWriteBOX
+% Use in \makebox like as...
+%
+% \put(x,y){\makebox(0,0){\owbox{strings}}}
+%
+\newdimen\owborder\owborder=2mm%
+%
+\def\owbox{\@ifnextchar [{\@owbox}{\@owbox[0mm]}}%
+\def\@owbox[#1]#2{%
+\filledbox{ip}{0}{0pt}{0pt}{#1}{#2}%
+\special{ip}%
+{#2}%
+}
+%
+% Shadowed BOX
+%
+% \put(x,y){\makebox(0,0){\shadowedbox{strings}}}
+%
+% \shadowshift=3mm for shift parameter
+% \def\shadowenv{3mm} for width of border of shadowedbox
+% \def\shadowlevel{0.5} for gray level of shadow
+% \def\shadowframe{1}   for fram of front box in 0.001in
+%      ^^^^^^^^^^^^^^ not  installed 
+\newdimen\shadowshift\shadowshift3mm
+\newdimen\shadowenv\shadowenv3mm
+\def\shadowlevel{0.5}
+\def\shadowframe{10}
+\def\shadowedbox#1{%
+\Tlinethickness{\shadowframe}%
+\filledbox{ip}{\shadowlevel}{\the\shadowshift}{-\the\shadowshift}{\the\shadowenv}{#1}%
+\filledbox{fp}{0}{0pt}{0pt}{\the\shadowenv}{#1}%
+{#1}}%
+%
+%
+%\filledbox{fp|ip|da}{grey level}{offset x}{offset y}{bordar width}{strings}
+%
+\def\filledbox#1#2#3#4#5#6{%
+\setbox\@tempboxa\hbox{#6}%
+\@tempdima\wd\@tempboxa%
+\advance\@tempdima#3%
+\advance\@tempdima#5%
+\@tempdimb\ht\@tempboxa%
+\advance\@tempdimb#4%
+\advance\@tempdimb#5%
+\@tempdimc-\dp\@tempboxa%
+\advance\@tempdimc#4%
+\advance\@tempdimc-#5%
+\@tempdimd#3%
+\advance\@tempdimd-#5%
+\@tempcnta\@tempdima\advance\@tempcnta 2368 \divide\@tempcnta 4736%
+\@tempcntb-\@tempdimb\advance\@tempcntb -2368 \divide\@tempcntb 4736%
+\@tempcntc-\@tempdimc\advance\@tempcntc -2368 \divide\@tempcntc 4736%
+\@tempcntd\@tempdimd\advance\@tempcntd 2368 \divide\@tempcntd 4736%
+\special{sh #2}%
+\@Tpaspecial{\the\@tempcntd}{\the\@tempcntc}%
+\@Tpaspecial{\the\@tempcntd}{\the\@tempcntb}%
+\@Tpaspecial{\the\@tempcnta}{\the\@tempcntb}%
+\@Tpaspecial{\the\@tempcnta}{\the\@tempcntc}%
+\@Tpaspecial{\the\@tempcntd}{\the\@tempcntc}%
+\special{#1}}%
+%
+%
+% Select optimal font-size.
+%     \Tsetfont{size} : size unit is \unitlength.
+%
+% If you cannot use scalable-janapese-font, use this.
+%\def\Tsetfont#1{\@Tsetfont{#1\unitlength}}%
+% If you can use scalable-japanese-font, use this.
+\def\Tsetfont#1{\@Tsetfont{#1\unitlength}\Tmin{#1}\Tgoth{#1}}%
+% If you can use scalable-cm-font, use this.
+\def\Tsetfont#1{\@Tsetfont{#1\unitlength}\Tmin{#1}\Tgoth{#1}\Tcmr{#1}\Tcmbx{#1}}%
+%
+\def\@Tsetfont#1{%
+\ifdim #1<5.5pt\vpt\else\ifdim #1<6.5pt \vipt\else\ifdim #1<7.5pt\viipt
+\else\ifdim #1 <8.5pt\viiipt\else\ifdim #1<9.5pt\ixpt\else
+\ifdim #1<10.5pt\xpt\else\ifdim #1<11.5pt\xipt\else\ifdim #1<13pt\xiipt
+\else\ifdim #1<15.5pt\xivpt\else\ifdim #1<18.5pt\xviipt\else\ifdim
+#1 <22.5pt\xxpt\else\xxvpt\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}%
+\def\Tmin#1{%
+        \@tempdima #1\unitlength%
+        \@tempcnta \@tempdima \divide\@tempcnta 62415% 本来は65536
+        \font\mc=min10 at \the\@tempcnta pt}
+\def\Tgoth#1{%
+        \@tempdima #1\unitlength%
+        \@tempcnta \@tempdima \divide\@tempcnta 62415% 本来は65536
+        \font\gt=goth10 at \the\@tempcnta pt}
+\def\Tcmr#1{%
+        \@tempdima #1\unitlength%
+        \@tempcnta \@tempdima \divide\@tempcnta 62415% 本来は65536
+        \font\rm=cmr10 at \the\@tempcnta pt}
+\def\Tcmbx#1{%
+        \@tempdima #1\unitlength%
+        \@tempcnta \@tempdima \divide\@tempcnta 62415% 本来は65536
+        \font\bf=cmbx10 at \the\@tempcnta pt}
+\def\Tcmss#1{%
+        \@tempdima #1\unitlength%
+        \@tempcnta \@tempdima \divide\@tempcnta 62415% 本来は65536
+        \font\sf=cmss10 at \the\@tempcnta pt}
+%
+%
+\def\Tdefi#1#2{\def#1{\shortstack{#2}}}
+\def\Tdefii#1#2{\def#1{\shortstack[l]{#2}}}
+\def\Tdefiii#1#2{\def#1{\shortstack[r]{#2}}}
+%
+% Det defaults
+\def\THICKi{4}\def\Tbleveli{0}%%
+\def\THICKii{8}\def\Tblevelii{0.1}%%
+\def\THICKiii{12}\def\Tbleveliii{0.3}%%
+\def\THICKiv{15}\def\Tbleveliv{0.5}%%
+\def\THICKv{20}\def\Tblevelv{0.7}%%
+\def\THICKvi{30}\def\Tblevelvi{0.9}%%
+\def\THICKvii{40}\def\Tblevelvii{1.0}%%
+\Tdotlinepatn{{dt}[30]}%
+\Tdashlinepatn{{da}[100][50][100][50]}%
+\Tuserlineipatn{{da}[200][50][50][50]}%
+\Tuserlineiipatn{{da}[200][50][50][50][50][50]}%
+\def\str{}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	楕円の付け加え(tpic2からコピー)	1997.2.15	N.Takesue
+%
+\def\Tearc(#1,#2,#3,#4,#5,#6){\@Tearc{ar}{#1}{#2}{#3}{#4}{#5}{#6}}
+\def\Tiearc(#1,#2,#3,#4,#5,#6){\@Tearc{ia}{#1}{#2}{#3}{#4}{#5}{#6}}
+\def\Tecircle(#1,#2,#3,#4){\@Tearc{ar}{#1}{#2}{#3}{#4}{0}{6.2832}}
+\def\Tiecircle(#1,#2,#3,#4){\@Tearc{ia}{#1}{#2}{#3}{#4}{0}{6.2832}}
+\def\@Tearc#1#2#3#4#5#6#7{%
+%% convert TeX dimension to length in terms thousandth of an inch
+	\@tempdima #2\unitlength
+	\@tempdimb #3\unitlength
+	\@tempdimc #4\unitlength
+	\@tempdimd #5\unitlength
+        \@tempcnta \@tempdima \advance\@tempcnta 2368 \divide\@tempcnta 4736
+	\@tempcntb -\@tempdimb \advance\@tempcntb -2368 \divide\@tempcntb 4736
+        \@tempcntc \@tempdimc \advance\@tempcntc 2368 \divide\@tempcntc 4736
+        \@tempcntd \@tempdimd \advance\@tempcntd 2368 \divide\@tempcntd 4736
+	\@Tearcspecial{#1}{\the\@tempcnta}{\the\@tempcntb}{\the\@tempcntc}{\the\@tempcntd}{#6}{#7}%
+        \wd\@tempboxa\z@ \box\@tempboxa}
+\def\@Tearcspecial#1#2#3#4#5#6#7{%
+	\expandafter\special{#1 #2 #3 #4 #5 #6 #7}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Gpicで描いた絵を取り込むためのマクロの付け加え
+%
+\def\dopics{\par\vskip\parskip\centerline{\box\graph}}%\vskip\parskip}%
+\def\dopic{\par\vskip\parskip\centerline{\box\graph}\vskip\parskip\par}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
