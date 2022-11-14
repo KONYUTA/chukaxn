@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  14 NOV 2022 20:00
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  15 NOV 2022 00:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -200,25 +200,25 @@ File: images/tiriixn.png Graphic file (type bmp)
 File: images/shougakkou_gmap.png Graphic file (type bmp)
 <images/shougakkou_gmap.png>
 
-Underfull \hbox (badness 3579) in paragraph at lines 195--196
+Underfull \hbox (badness 3579) in paragraph at lines 203--204
 []\JY1/mc/m/n/9 国土交通省\OT1/cmr/m/n/9 , \JY1/mc/m/n/9 国土数値情報ダウンロ 
 ードサ ービス\OT1/cmr/m/n/9 ,
  []
 
 
-Overfull \hbox (40.82684pt too wide) in paragraph at lines 197--198
+Overfull \hbox (40.82684pt too wide) in paragraph at lines 204--205
 []\OT1/cmr/m/n/9 consbio, mbtile-server, [https://github.com/consbio/mbtileserv
 er],
  []
 
 [2] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 1580 strings out of 478724
- 26269 string characters out of 5858393
- 339314 words of memory out of 5000000
- 20019 multiletter control sequences out of 15000+600000
+ 1581 strings out of 478724
+ 26286 string characters out of 5858393
+ 340576 words of memory out of 5000000
+ 20020 multiletter control sequences out of 15000+600000
  478230 words of font info for 64 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 70i,8n,76p,322b,345s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,8n,76p,301b,345s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (2 pages, 17500 bytes).
+Output written on main.dvi (2 pages, 18180 bytes).
