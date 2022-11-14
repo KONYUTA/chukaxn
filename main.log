@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  14 NOV 2022 19:55
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  14 NOV 2022 20:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -177,28 +177,28 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 26.
-File: images/pngs/shibou_status.png Graphic file (type bmp)
-<images/pngs/shibou_status.png>
+File: images/shibou_status.png Graphic file (type bmp)
+<images/shibou_status.png>
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 34.
-File: images/jinshixn.eps Graphic file (type eps)
-<images/jinshixn.eps>
-File: images/bussoxn.eps Graphic file (type eps)
-<images/bussoxn.eps>
-File: images/context.eps Graphic file (type eps)
-<images/context.eps>
-File: images/implication.eps Graphic file (type eps)
-<images/implication.eps>
+File: images/jinshixn.png Graphic file (type bmp)
+<images/jinshixn.png>
+File: images/bussoxn.png Graphic file (type bmp)
+<images/bussoxn.png>
+File: images/context.png Graphic file (type bmp)
+<images/context.png>
+File: images/implication.png Graphic file (type bmp)
+<images/implication.png>
  [1
 
 
 ]
-File: images/mapclassification_server.eps Graphic file (type eps)
-<images/mapclassification_server.eps>
-File: images/tiriixn.eps Graphic file (type eps)
-<images/tiriixn.eps>
-File: images/shougakkou_gmap.eps Graphic file (type eps)
-<images/shougakkou_gmap.eps>
+File: images/mapclassification_server.png Graphic file (type bmp)
+<images/mapclassification_server.png>
+File: images/tiriixn.png Graphic file (type bmp)
+<images/tiriixn.png>
+File: images/shougakkou_gmap.png Graphic file (type bmp)
+<images/shougakkou_gmap.png>
 
 Underfull \hbox (badness 3579) in paragraph at lines 195--196
 []\JY1/mc/m/n/9 国土交通省\OT1/cmr/m/n/9 , \JY1/mc/m/n/9 国土数値情報ダウンロ 
@@ -213,12 +213,12 @@ er],
 
 [2] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 1582 strings out of 478724
- 26310 string characters out of 5858393
- 339263 words of memory out of 5000000
+ 1580 strings out of 478724
+ 26269 string characters out of 5858393
+ 339314 words of memory out of 5000000
  20019 multiletter control sequences out of 15000+600000
  478230 words of font info for 64 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  70i,8n,76p,322b,345s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (2 pages, 17428 bytes).
+Output written on main.dvi (2 pages, 17500 bytes).
