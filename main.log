@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  13 NOV 2022 20:48
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  14 NOV 2022 19:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -104,7 +104,22 @@ File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
 )
 \minicolumnsep=\skip50
 \textwidthhalf=\skip51
-) (./styles/times.sty)
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: dvipdfmx.def on input line 149.
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2021/03/18 v5.0j Graphics/color driver for dvipdfmx
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
+(./styles/times.sty)
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks20
@@ -123,101 +138,87 @@ File: l3backend-dvips.def 2022-02-07 L3 backend support: dvips
 LaTeX Warning: Unused global option(s):
     [8.5pt].
 
-(./main.aux
-
-LaTeX Warning: Label `classifications' multiply defined.
-
-)
+(./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 18.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 18.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 22.
-File: images/shibou_status.eps Graphic file (type eps)
- <images/shibou_status.eps>
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 32.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 32.
-File: images/jinshixn.eps Graphic file (type eps)
- <images/jinshixn.eps>
-File: images/bussoxn.eps Graphic file (type eps)
- <images/bussoxn.eps>
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 56.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 21.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 56.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 21.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 64.
+(Font)              <9> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 64.
-File: images/no_image.eps Graphic file (type eps)
-
-<images/no_image.eps>
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 95.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 95.
-
-
-LaTeX Warning: Reference `地図画像分類システム' on page 1 undefined on input li
-ne 95.
-
-
-LaTeX Warning: Reference `地図画像分類システム' on page 1 undefined on input li
-ne 99.
-
-[1
+(Font)              <6> on input line 26.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 26.
+File: images/pngs/shibou_status.png Graphic file (type bmp)
+<images/pngs/shibou_status.png>
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 34.
+File: images/jinshixn.eps Graphic file (type eps)
+<images/jinshixn.eps>
+File: images/bussoxn.eps Graphic file (type eps)
+<images/bussoxn.eps>
+File: images/context.eps Graphic file (type eps)
+<images/context.eps>
+File: images/implication.eps Graphic file (type eps)
+<images/implication.eps>
+ [1
 
 
 ]
 File: images/mapclassification_server.eps Graphic file (type eps)
- <images/mapclassification_server.eps>
-Overfull \hbox (38.25742pt too wide) in paragraph at lines 120--121
-[]\OT1/cmr/m/n/9 consbio, mbtile-server, [https://github.com/consbio/mbtileserv
-er] 
+<images/mapclassification_server.eps>
+File: images/tiriixn.eps Graphic file (type eps)
+<images/tiriixn.eps>
+File: images/shougakkou_gmap.eps Graphic file (type eps)
+<images/shougakkou_gmap.eps>
+
+Underfull \hbox (badness 3579) in paragraph at lines 195--196
+[]\JY1/mc/m/n/9 国土交通省\OT1/cmr/m/n/9 , \JY1/mc/m/n/9 国土数値情報ダウンロ 
+ードサ ービス\OT1/cmr/m/n/9 ,
  []
 
-[2
 
-] (./main.aux)
+Overfull \hbox (40.82684pt too wide) in paragraph at lines 197--198
+[]\OT1/cmr/m/n/9 consbio, mbtile-server, [https://github.com/consbio/mbtileserv
+er],
+ []
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[2] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 1392 strings out of 478724
- 22961 string characters out of 5858393
- 334733 words of memory out of 5000000
- 19844 multiletter control sequences out of 15000+600000
- 479001 words of font info for 67 fonts, out of 8000000 for 9000
+ 1582 strings out of 478724
+ 26310 string characters out of 5858393
+ 339263 words of memory out of 5000000
+ 20019 multiletter control sequences out of 15000+600000
+ 478230 words of font info for 64 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 70i,6n,76p,331b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,8n,76p,322b,345s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (2 pages, 9000 bytes).
+Output written on main.dvi (2 pages, 17428 bytes).
