@@ -103,7 +103,7 @@
 %%%%%%%%%%%%%%%%%%
 \section{分析用データ収集手法}
 \subsection{交通事故データを分析に用いる際の問題点}
-本研究で用いる人身事故データと物損事故データの間には記録されている属性に違いがあり(付録\ref{付録1}), 分析にあたって保有する属性を一致させる必要がある. 
+本研究で用いる人身事故データと物損事故データの間には記録されている属性に違いがあり(付録A), 分析にあたって保有する属性を一致させる必要がある. 
 本研究では各事故データに対して属性を追加するためのツールとして, 座標周辺探索プログラム及び地図画像分類システムを作成した. 
 
 \subsection{座標周辺探索プログラム}
@@ -139,11 +139,26 @@ WebAPサーバはJavaプラットフォーム向けのフレームワークで�
     \label{tiriixn}
 \end{figure}
 
+\subsection{ツールを用いて追加するデータ}
+今回作成したツールを用いて収集するデータをTable.\ref{収集するデータ}に示す. 
+これらのデータを交通事故データに追加した上で今後の分析作業を行う. 
+
+\begin{table}[htb]
+    \small
+    \caption{作成したツールを用いて収集するデータ}
+    \label{収集するデータ}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}座標周辺探索プログラム\\ を用いて交通事故データに\\ 追加する属性\end{tabular}} & \begin{tabular}[c]{@{}l@{}}周辺の小学校の有無\\ 周辺の中学校の有無\\ 周辺の高校の有無\\ 周辺の大学の有無\\ 周辺の幼稚園の有無\\ 周辺の集客施設の有無\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}地図画像分類システム\\ を用いて物損事故データに\\ 追加する属性\end{tabular}}  & \begin{tabular}[c]{@{}l@{}}道路形状(交差点, トンネル, \\橋, 道路以外)\\ 車道幅員\\ 信号機の有無\\ 歩車道区分\end{tabular}                                                                                                                     \\ \hline
+    \end{tabular}
+\end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%
 \section{分析用データ収集の結果}
 \subsection{座標周辺探索プログラムによるデータ収集の結果}
-国土数値情報ダウンロードシステムの"小学校区(ポリゴン)を用いて交通事故発生地点周辺の小学校の有無を判定し, 交通事故データに追加した. 
+国土数値情報ダウンロードシステムの"小学校区(ポリゴン)"及び"中学校区(ポリゴン)"を用いて交通事故発生地点周辺の小学校及び中学校の有無を判定し, 交通事故データに追加した. 
 人身事故発生地点のうち小学校周囲100m以内と判定された地点の地図(Google Map)をFig.\ref{shougakkou_gmap}に示す. 
 
 \begin{figure}[htb]
@@ -173,10 +188,12 @@ WebAPサーバはJavaプラットフォーム向けのフレームワークで�
     \end{tabular}
 \end{table}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%
 \section{今後用いる分析手法}
 \subsection{クラス分類}
-本研究では, クラス分類を用いて交通事故データに対し人身事故(第一当事者が怪我), 人身事故(第二当事者が怪我), 物損事故の３種類に分類する. 
+本研究では, クラス分類を用いて交通事故データに対し人身事故(第一当事者が怪我), 人身事故(第二当事者が怪我), 人身事故(第一当事者及び第二当事者が怪我), 物損事故の4種類に分類する. 
 
 クラス分類の手法として, 線形サポートベクターマシン, 非線形サポートベクターマシン, 勾配ブースティング決定枝などが挙げられる. 
 
@@ -185,67 +202,15 @@ WebAPサーバはJavaプラットフォーム向けのフレームワークで�
 
 \subsection{形式概念分析}
 形式概念分析 ( Formal Concept Analysis )は1981年のBanff 会議"Ordered Sets"においてRudolf Wille 氏によって提案されたデータ分析手法である\cite{形式概念分析-入門・支援ソフト・応用}．
-Table.\ref{context}に示すようなデータ集合に対して形式概念分析を用いることで，複雑なデータの構造の分析や，属性間に成り立つ含意論理の抽出によるデータ全体が持つ傾向分析を行うことが可能である. 
+データ集合に対して形式概念分析を用いることで，複雑なデータの構造の分析や，属性間に成り立つ含意論理の抽出によるデータ全体が持つ傾向分析を行うことが可能である. 
 
-\subsection{ImplicationとAssociation Rule}
 形式概念分析では, 「Aという属性を持つものは必ずBである」というルールを抽出することで, データの集合における属性間の関係を可視化する. 
-このルールのことをImplication(含意論理)という. 動物の例におけるImplicationをTable.\ref{implications}の番号1及び2に示す. 
-
+このルールのことをImplication(含意論理)という. 
 
 また形式概念分析の補助として, 「Aという属性を持つオブジェクトのうち何\%はBという属性を持つ」というルールを抽出することで, 外れ値によってImplicationとして抽出されない属性感の関係を抽出することが可能である. 
-このルールのことをAssociation Rule(関連)という. 動物の例におけるAssociation RuleをTable.\ref{implications}の番号3及び4に示す. 
+このルールのことをAssociation Rule(関連)という. 
 
 本研究では交通事故データにおけるAssociation Rule を抽出することで, 各種類の交通事故が持つ傾向を抽出する. 
-
-\begin{table}[htb]
-    \caption{動物の例におけるコンテクスト表}
-    \label{context}
-    \centering
-    \small
-    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
-        \hline
-        \textbf{}          & \multicolumn{1}{l|}{\textbf{二足}} & \multicolumn{1}{l|}{\textbf{四足}} & \multicolumn{1}{l|}{\textbf{ヒレ}} & \multicolumn{1}{l|}{\textbf{陸上}} & \multicolumn{1}{l|}{\textbf{水中}} & \multicolumn{1}{l|}{\textbf{空中}} & \multicolumn{1}{l|}{\textbf{胎生}} & \multicolumn{1}{l|}{\textbf{卵生}} & \multicolumn{1}{l|}{\textbf{哺乳類}} \\ \hline
-        \textbf{イヌ}        &                                    & x                                  &                                  & x                                &                                  &                                  & x                                &                                  & x                                 \\ \hline
-        \textbf{ネコ}        &                                    & x                                  &                                  & x                                &                                  &                                  & x                                &                                  & x                                 \\ \hline
-        \textbf{カラス}       & x                                  &                                    &                                  & x                                &                                  & x                                &                                  & x                                &                                   \\ \hline
-        \textbf{ニワトリ}      & x                                  &                                    &                                  & x                                &                                  &                                  &                                  & x                                &                                   \\ \hline
-        \textbf{カエル}       &                                    & x                                  &                                  & x                                & x                                &                                  &                                  & x                                &                                   \\ \hline
-        \textbf{メダカ}       &                                    &                                    & x                                &                                  & x                                &                                  &                                  & x                                &                                   \\ \hline
-        \textbf{カモノハシ}     &                                    & x                                  & x                                & x                                & x                                &                                  &                                  & x                                & x                                 \\ \hline
-        \textbf{サンショウウオ} &                                    & x                                  & x                                & x                                & x                                &                                  &                                  & x                                & x                                 \\ \hline
-        \textbf{クジラ}       &                                    &                                    & x                                &                                  & x                                &                                  & x                                &                                  & x                                 \\ \hline
-    \end{tabular}
-\end{table}
-
-%\begin{figure}[htb]
-%    \centering
-%    \includegraphics[height=30mm]{images/context.png}
-%    \vspace{-4mm}
-%    \caption{動物の例におけるコンテクスト表}
-%    \label{context}
-%\end{figure}
-\begin{table}[htb]
-\caption{ImplicationとAssociation}
-\label{implications}
-\centering
-\small
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{番号}  & \multicolumn{1}{l|}{\textbf{前提部}} & \multicolumn{1}{l|}{\textbf{確信度}} & \multicolumn{1}{l|}{\textbf{結論部}} \\ \hline
-\textbf{1}   & 胎生                                & 100\%(3/3)                        & 哺乳類                               \\ \hline
-\textbf{2}   & 陸上・水中                             & 100\%(3/3)                        & 四足・卵生                             \\ \hline
-\textbf{3}   & 水中                                & 80\%(4/5)                         & 卵生                                \\ \hline
-\textbf{4}   & 哺乳類                               & 75\%(3/4)                         & 胎生                                \\ \hline
-\textbf{...} & ...                               & ...                               & ...                               \\ \hline
-\end{tabular}
-\end{table}
-%\begin{figure}[htb]
-%    \centering
-%    \includegraphics[height=25mm]{images/implication.png}
-%    \vspace{-6mm}
-%    \caption{動物の例におけるImplicationとAssociation Ruleの一部}
-%    \label{implications}
-%\end{figure}
 
 
 %%%%%%%%%%%%%
@@ -273,7 +238,7 @@ Table.\ref{context}に示すようなデータ集合に対して形式概念分�
 \chapter{交通事故データの属性}
 本研究で用いる交通事故データが持つ属性を以下に示す。
 \begin{table}[htb]
-\label{付録1}
+%\label{付録1}
 \small
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
