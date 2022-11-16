@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  16 NOV 2022 11:07
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022) (preloaded format=platex 2022.6.7)  16 NOV 2022 11:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -196,36 +196,36 @@ File: images/tiriixn.png Graphic file (type bmp)
 File: images/shougakkou_gmap.png Graphic file (type bmp)
 <images/shougakkou_gmap.png>
 
-Underfull \hbox (badness 3579) in paragraph at lines 228--229
+Underfull \hbox (badness 3579) in paragraph at lines 229--230
 []\JY1/mc/m/n/9 国土交通省\OT1/cmr/m/n/9 , \JY1/mc/m/n/9 国土数値情報ダウンロ 
 ードサ ービス\OT1/cmr/m/n/9 ,
  []
 
 
-Overfull \hbox (40.82684pt too wide) in paragraph at lines 229--230
+Overfull \hbox (40.82684pt too wide) in paragraph at lines 230--231
 []\OT1/cmr/m/n/9 consbio, mbtile-server, [https://github.com/consbio/mbtileserv
 er],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 []\JY1/mc/m/n/9 国土地理院\OT1/cmr/m/n/9 , \JY1/mc/m/n/9 電子国土基本図\OT1/cmr
 /m/n/9 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 \OT1/cmr/m/n/9 [https://maps.gsi.go.jp/development/ichiran.html],
  []
 
 [2]
 付 録 A  
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 238.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 239.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 238.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 239.
 
-Overfull \hbox (4.08324pt too wide) in paragraph at lines 243--250
+Overfull \hbox (4.08324pt too wide) in paragraph at lines 244--251
 [][][][] 
  []
 
@@ -238,10 +238,10 @@ Overfull \vbox (6.44444pt too high) has occurred while \output is active []
 
 ] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 1578 strings out of 478724
- 26047 string characters out of 5858393
- 356104 words of memory out of 5000000
- 20017 multiletter control sequences out of 15000+600000
+ 1577 strings out of 478724
+ 26040 string characters out of 5858393
+ 351353 words of memory out of 5000000
+ 20016 multiletter control sequences out of 15000+600000
  480533 words of font info for 73 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  70i,15n,76p,1172b,379s stack positions out of 10000i,1000n,20000p,200000b,200000s
